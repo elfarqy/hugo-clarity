@@ -1,0 +1,21 @@
+
+<!-- image -->
+<picture {{ with .Get "class" }}class="{{.}}"{{ end }}>
+    {{ with .Get "link"}}<a href="{{.}}">{{ end }}
+    <source srcset="{{ .Get "src" | absURL }}.webp" type="image/webp">
+    <source srcset="{{ .Get "src" | absURL }}" type="image/png">
+    <img src="{{ .Get "src" | absURL }}" {{ if or (.Get "alt") (.Get "caption") }}alt="{{ with .Get "alt"}}{{.}}{{else}}{{ .Get "caption" }}{{ end }}"{{ end }} />
+    {{ if .Get "link"}}</a>{{ end }}
+    <!-- {{ if or (or (.Get "title") (.Get "caption")) (.Get "attr")}} -->
+    <!-- {{ if isset .Params "title" }}
+        <p class="img_alt">{{ .Get "title" }}</p>{{ end }}
+        {{ if or (.Get "caption") (.Get "attr")}}<p>
+        {{ .Get "caption" }}
+        {{ with .Get "attrlink"}}<a href="{{.}}"> {{ end }}
+            {{ .Get "attr" }}
+        {{ if .Get "attrlink"}}</a> {{ end }}
+        </p> {{ end }} -->
+    
+    <!-- {{ end }} -->
+</picture>
+<!-- image -->

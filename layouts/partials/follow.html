@@ -15,7 +15,7 @@
   {{- if and (eq (hasPrefix $url $base) false) (eq (hasPrefix $url "http") false) }}
     {{ $url = absLangURL $url }}
   {{- end }}
-  <a href="{{ $url }}">
+  <a href="{{ $url }}" aria-label="navigation icon">
     {{ partial "sprite" (dict "icon" $label) }}
   </a>
   {{- end }}

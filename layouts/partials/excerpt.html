@@ -9,7 +9,11 @@
     {{- with .Params.thumbnail }}
     <div class="excerpt_footer partition">
       <div class="excerpt_thumbnail">
-        <img src='{{ if (hasPrefix . "http") }}{{ . }}{{ else }}{{ absURL . }}{{ end }}'>
+        <picture>
+          <source srcset="{{ if (hasPrefix . "http") }}{{ . }}{{ else }}{{ absURL . }}{{ end }}.webp" type="image/webp">
+          <source srcset="{{ if (hasPrefix . "http") }}{{ . }}{{ else }}{{ absURL . }}{{ end }}" type="image/png">
+          <img src="{{ if (hasPrefix . "http") }}{{ . }}{{ else }}{{ absURL . }}{{ end }}" alt="thumbnail {{ $.Param "title" }}">
+        </picture>
       </div>
       {{ else }}
       <div class="excerpt_footer">
@@ -24,7 +28,7 @@
               {{ truncate 320 .Summary }}
             {{ end }}
           </p>
-          <a href="{{ .Permalink }}" class="excerpt_more button">{{ T "read_more" }}</a>
+          <a href="{{ .Permalink }}" class="excerpt_more button" aria-label="detail {{ $.Param "title" }}">Continue Reading</a>
         </div>
       </div>
     </div>

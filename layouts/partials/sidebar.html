@@ -3,7 +3,7 @@
   <section class="sidebar_inner">
     {{ if $s.IntroDescription }}
       <h2>{{ $s.Author }}</h2>
-      <div class="sidebar_description">
+      <div class="sidebar_description">        
         {{ $s.IntroDescription | markdownify }}
       </div>
       {{- if ( ne $s.introURL false ) }}

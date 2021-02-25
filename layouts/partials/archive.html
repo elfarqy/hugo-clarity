@@ -7,8 +7,11 @@
     {{- range (.Paginate $pages).Pages }}
       {{ partial "excerpt" . }}
     {{- end }}
-    <li>
+    <!-- <li>
       {{- template "_internal/pagination.html" . }}
+    </li> -->
+    <li>
+      {{- partial "pagination" . }}
     </li>
   </ul>
   {{- partial "sidebar" . }}

@@ -3,8 +3,12 @@
   {{ partial "math" . }}
 {{- end }}
 <footer class="footer">
+
+  <div class="footer_inner wrap pale" style="text-align:center; display: flex; justify-content: center; font-size: 1.2em;">
+    <p><b><a href="{{ absURL (default "about") }}">About Us</a></b> • <b><a href="{{ absURL (default "privacy-policy" $s.footerLogo) }}">Privacy Policy</a></b> • <b><a href="{{ absURL (default "contact-us" $s.footerLogo) }}">Contact Us</a></b></p>
+  </div>
   <div class="footer_inner wrap pale">
-    <img src='{{ absURL (default "icons/apple-touch-icon.png" $s.footerLogo) }}' class="icon icon_2 transparent">
+    <img src='{{ absURL (default "icons/apple-touch-icon.png" $s.footerLogo) }}' class="icon icon_2 transparent" aria-label="footer icon">
     <p>{{ T "copyright" }}{{ with $s.since }} {{ . }}-{{ end }}<span class="year"></span> {{ upper .Site.Title }}. {{ T "all_rights" }}</p>
     {{- partial "top" .}}
   </div>

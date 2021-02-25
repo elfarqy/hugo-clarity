@@ -5,7 +5,11 @@
   <nav class="nav">
     <a href='{{ absLangURL "" }}' class="nav_brand nav_item{{ if eq $centerLogo true }} nav_hide{{ end }}">
       {{- with $logo }}
-      <img src="{{ absURL . }}" class="logo">
+      <picture>
+        <source srcset="{{ absURL . }}.webp" type="image/webp">
+        <source srcset="{{ absURL . }}" type="image/png">
+        <img src="{{ absURL . }}" class="logo" alt="branding logo">
+      </picture>
       {{- else }}
         {{ .Site.Title }}
       {{- end }}
@@ -30,7 +34,7 @@
         <div class="nav_sub">
           <span class="nav_child"></span>
           {{ range .Site.Home.AllTranslations }}
-          <a href="{{ .Permalink }}" class="nav_child nav_item">{{ .Language.LanguageName }}</a>
+          <a href="{{ .Permalink }}" class="nav_child nav_item" aria-label="navigation-item">{{ .Language.LanguageName }}</a>
           {{ end }}
         </div>
       </div>
